@@ -1,0 +1,63 @@
+instrukcje
+
+nop - dobra instrukcja do odczytywania, przez ta instrukcje program przechodzi plynnie, nie robi szkód w systemie
+
+halt - systemy musza miec zarzadzanie energią, z80 tego nie mial, za to mial wejscie w stan halt, czyli odczekiwanie w tym
+	miejscu, w pętli dopuki nie przyjdzie przerwanie
+|
+v
+di, ei, im
+
+scf - ustawi znacznik przeniesienia
+ccf - nie zeruje licznika przeniesienia, mozna to zrobic or znacznika przeniesienia z samym sobą
+
+skoki:
+JP - skaczemy bezwarunkowo przez adres wskazany przez adr. jest to tzn skok długi
+
+----------------	M1
+   c3				zapis hexa - cyfry po 4 bity c3 = |1100|0011|
+----------------	MR
+		lo
+----------------	MR	MR - memory read
+		hi
+
+skok warunkowy - tzw skok krótki
+--------^ -128
+	|
+-------
+< >	|
+--------V 128
+
+DJNZ - dekrementuje, a potem skacze jesli nie 0, domniemanym argumenten tej intrukcji jest B - w rejestrze 8 bitowym
+	najwieksza krotność tej pętli to 256, a nie 255. (jezeli zaczniemy od 0 w dół, bo pierwsze okrążenie zawsze się wykona)
+
+stos:
+stos rośnie w stronę mniejszych adresów
+push,pop - argumentem jest wartość 16 biotwa, najczęściej będzie PUSH AF
+PUSH AF
+  .
+  .
+  .
+POP AF
+można też zamieniać miejscami
+PUSH BC
+PUCH AF
+  . 
+POP BC
+POP AF
+
+niejawnie stos jest wywoływany z podporgramów
+
+RST - skrócona forma instrukcji CALL - jednobajtowa, 8 standartów wykonania tej instrukcji (szczegóły przy okazji przerwań)
+dla CALL pierwsza instrukcja to będzie CD
+
+EX(SP),rr - cele diagnostyczne, uruchamianie
+
+
+wejsćia/wyjścia: - wtedy aktywny jest sygnał i/o request
+IN.r(C) - moze byc akumulatorem, ale tez nie musi -> kod operacyjny jest dwubajtowy, występują obok siebie  cykle m1
+
+opereacje łańcuchowe
+LDIR - skopiowanie bloku danych z jednego miesca w drugie, I - inkrementuje adresy, R - DJLZ schowanie w środku, licznik rozkazów sie cofa
+LDDR - z dekrementowanień liczników adresów, bo nowe polożenie bloku dancyh możliwe że się pokrywa ze starym miejcem, dlatego możemy wybrac od 
+którego miejsca zacząć

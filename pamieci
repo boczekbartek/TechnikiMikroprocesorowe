@@ -1,0 +1,40 @@
+tryby dostępu do pamięci:
+*przez adres - swobodny
+*sekwencyjny -> na taśmie
+*cykliczny
+*asocjacyjne - znamy czesc informacji, a szukamy pozostałej części. mamy etykietki. mapowanie etykiet na wartość, szukamy po kluczach
+
+           / \cpv | rejestry
+          /   \cache | pamięć kieszeniowa
+         /     \pamięć operacyjna | rejestry zewnętrze - > pamięci półprzewodnikowa różnej maści
+        /       \zasoby sieci
+
+ROM - pamięć nieulotna, po odcieciu napięcia program zostaje
+na początku to co było zawarte w strukturze determinowało program, program był zależny od struktury pamięci
+można też tam było trzzymać dane, np. w drukarkach schematy czcionek.
+
+PROM - programowane pamięci ROM, klient mogl sobie sam zaprogramowac, ale tez raz
+
+RAM - szybki odczyt/ zapis.
+
+2^18 -> 2^15 B -> 32 x 1K (kilo bajt
+
+ze slajdu -> 6 + 9 = 15 bajtów służących do odczytu
+WE = write enable - niskko mamy szance na zapsis
+CS - chip selesct - kieldy pamięć jest wyybrana do współpracy z szyną, jeżeli tu jest high to nic się nie stanie, nie wolno mu wychylić się na szyne
+jeżeli CS, to matryca jest w stanie takiej "drzemki"
+OE - kiedy układ może wyjść z danymi na szynę
+
+WE i OE nie powinny być na raz aktywne, ale w pamieciach takie stany często zachowują się w jakiś określony w specyfikacji sposób, np. gdy jest
+L L L zapisz
+
+parametry czasowe pamięci:
+czas dostępu - typowy dla pamięci
+każdy z parametrów czasowych moze miec wpływ na to że obiekt nie zdąży 
+
+jak łaczymy procesor z80 z pamięcią ram?
+--------------
+            |
+            |
+	    |
+Z80	    |
